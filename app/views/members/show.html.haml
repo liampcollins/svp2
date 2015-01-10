@@ -1,0 +1,46 @@
+.manage_progs{"ng-controller" => "progController"}
+  .manage_progs_page{'ng-hide'=>'hidingManageProgs'}
+
+    %p#notice= notice
+    .manage_programme_instance{'ng-repeat'=>'programme in current_user_programmes'}
+      %img(src="{{programme.prog_image.url}}")
+      .member_progs_content 
+        .member_prog_name
+          {{programme.name}}
+        .member_prog_description
+          {{programme.description}}
+        %br
+        %br
+        .member_prog_type
+          {{programme.prog_type}}
+          , founded in 
+          {{programme.founded}}
+        %br
+        .member_prog_buttons
+          .button#showing-venture-button{'ng-click'=>"showVentures()"}
+            Show Ventures
+          .button{'ng-click'=>"addVentureButton(programme)"}
+            Add a Venture
+          .button{'ng-click'=>"editProgrammeButton(programme)"}
+            Edit Programme
+        / .button{'ng-click'=>"editProgrammeButton(#{programme.to_json})"}
+      .prog_list{'ng-show'=>"showingVentures"}
+        / -programme.ventures.each do |venture|
+        .prog_list_instance{'ng-repeat'=>'venture in programme.ventures', 'ng-click' => 'showVenture(venture)'}
+          %img.venture_img(src="http://saltlake.impacthub.net/wp-content/uploads/sites/97/2013/10/collaborate-768x503.jpg")
+          .prog_list_instance_text
+            %h2
+              {{venture.name}}
+            %p
+              {{venture.org_type}}
+              %span || {{venture.location}}
+          
+          
+      / = link_to 'Edit', edit_member_path(@user)
+      
+      / = link_to 'Back', members_path
+  .programme-form{'ng-show' => 'editingProgramme'}
+    .edit-programme-form
+  .venture-form{'ng-show' => 'addingVenture'}
+    .add-venture-form
+

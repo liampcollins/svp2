@@ -1,0 +1,125 @@
+<!-- <p notice= notice></p>
+<div class="profile_image">
+  <img src="{{selected_programme.prog_image.url}}"/>
+</div>
+<br>
+<div class="profile_name">
+    {{selected_programme.name}}
+</div>
+<br>
+<div class="profile_description">
+  {{selected_programme.description}}
+</div>
+<div class="profile_type">
+  Type:{{selected_programme.prog_type}}
+</div>
+<div class="profile_duration">
+  Duration:{{selected_programme.duration}}
+</div>
+<br>
+<div class="profile_funding">
+  Funding offered:£{{selected_programme.funding_offered}}
+</div>
+<br>
+<div class="profile_bottom_section">
+  <div class="venture_list"> 
+    Ventures
+    <hr>
+    <hr>
+    <div class="vent_name" ng-repeat="venture in selected_programme.ventures" ng-click="showVenture(venture)">
+      {{venture.name}}
+      <hr>
+    </div>
+  </div>
+  <div class="profile_buttons">
+    <div class="profile_url">
+      <a href="{{selected_programme.website_url}}"> View Website</a>
+    </div>
+    <div class="back_to_progs" ng-click="backToProgrammes()">Back to Programmes</div>
+  </div>
+</div>
+
+<div class="prog_list">
+  <div class="prog_list_instance venture_list_ins" ng-show="showingVenture">
+    <img class="vent_inst_img" src="http://saltlake.impacthub.net/wp-content/uploads/sites/97/2013/10/collaborate-768x503.jpg">
+    <div class="prog_list_instance_text venture_list_inst_text">
+      <h2 class="venture_name">
+          {{selected_venture.name}}
+      </h2>
+      <br>
+      <p class="venture_description">
+        {{selected_venture.description}}
+      <p>
+      <br>
+    </div>
+  </div>
+</div>
+
+ -->
+<div class="profile_name">
+  {{selected_programme.name}}
+</div>
+<div class="profile-flip-container" ontouchstart="this.classList.toggle('hover');">
+  <div class="profile-flipper">
+    <div class="profile-front">
+      <div class="profile_image">
+        <img src="{{selected_programme.prog_image.url}}"/>
+      </div>
+    </div>
+    <div class="profile-back">
+      <div class="profile_description">
+       {{selected_programme.description}}
+      </div>
+      <div class="profile_type">
+        Programme Type: {{selected_programme.prog_type}}
+      </div>
+      <div class="profile_duration">
+        Duration:{{selected_programme.duration}}
+      </div>
+      <br>
+      <div class="profile_funding">
+        Funding offered:£{{selected_programme.funding_offered}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="venture_list">
+  <div class="ventures-list-title">Ventures</div> 
+  <hr>
+  <hr>
+  <div class="vent_name" ng-repeat="venture in selected_programme.ventures" ng-click="showVenture(venture)">
+    {{venture.name}}
+    <hr>
+  </div>
+</div>
+
+<div class="prog_list">
+  <div class="prog_list_instance venture_list_ins" ng-show="showingVenture">
+    <img class="vent_inst_img" src="http://saltlake.impacthub.net/wp-content/uploads/sites/97/2013/10/collaborate-768x503.jpg">
+    <div class="prog_list_instance_text venture_list_inst_text">
+      <h2 class="venture_name">
+          {{selected_venture.name}}
+      </h2>
+      <br>
+      <p class="venture_description">
+        {{selected_venture.description}}
+      <p>
+      <br>
+    </div>
+  </div>
+</div>
+
+<div class="profile_buttons">
+    <div class="profile_url">
+      <a href="{{selected_programme.website_url}}">   View Website
+      </a>
+    </div>
+    <div class="back_to_progs" ng-click="backToProgrammes()">
+      Back to Programmes
+    </div>
+</div>
+
+
+

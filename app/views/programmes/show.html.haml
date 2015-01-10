@@ -1,0 +1,28 @@
+
+.profile
+  %p{:notice => "notice"}
+  .profile_image
+    %img{:src => @programme.prog_image}
+  %br/
+  .profile_name
+    =@programme.name
+  %br/
+  .profile_description
+    =@programme.description
+  %br/
+  .profile_type
+    Type: 
+    =@programme.prog_type
+  %br/
+  .profile_duration
+    Duration:
+    =@programme.duration
+  %br/
+  .profile_funding
+    Funding offered:
+    =@programme.funding_offered
+  %br/
+  .profile_url
+    %a{:href => "=@programme.website_url"} Website
+  .edit_button{"ng-click" => "editProfile(programme)"}
+    EDIT

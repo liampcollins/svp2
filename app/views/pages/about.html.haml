@@ -1,0 +1,26 @@
+.about_us_cont{"ng-controller" => "progController"}
+  = content_for :title, "About us"
+  .about_us_page
+    .about_us_container
+      .about_us 
+        Nesta is an innovation charity with a mission to help people and organisations bring great ideas to life.
+
+        We are dedicated to supporting ideas that can help improve all our lives, with activities ranging from early stage investment to in-depth research and practical programmes.
+         
+        We don’t work alone - we rely on the strength of the partnerships we form with you and with others to make change happen.
+         
+        Find out more about our mission below, meet the people that work here, and see how you can become part of the team.
+    .nesta_video
+      %iframe{:allowfullscreen => "", :frameborder => "0", :height => "480", :src => "//www.youtube.com/embed/pJQtjkl7L1I", :width => "450"}
+
+    .twitterfeed_panel  
+      %a.twitter-timeline{"data-widget-id" => "512015464860364801", :href => "https://twitter.com/nesta_uk"} Tweets by @nesta_uk
+      :javascript
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    %br
+    %br
+    %h2
+      Learn more about incubation for social good
+    %object{'data'=>"http://www.nesta.org.uk/sites/default/files/good_incubation_wv.pdf", 'type'=>"application/pdf", 'width'=>"800", 'height'=>"1000"}
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="svpApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= (yield(:title).empty? ? "SVP" : yield(:title) )%></title>
+  <%= include_gon %>
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  
+  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+  <%= javascript_include_tag "application" %>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  
+  <script><% if current_user%>
+            window.current_user_programmes = <%= raw current_user.programmes.to_json(include: [:ventures]) %>
+          <% end %></script>
+  <%= csrf_meta_tags %>
+</head>
+ <body>
+  <% if current_user %>
+    <%= render "layouts/user_menu"%>
+  <% else %>
+    <%= render "layouts/classic_menu"%>
+  <% end %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+<%= yield %>
+
+</body>
+</html>

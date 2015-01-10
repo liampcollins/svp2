@@ -1,0 +1,979 @@
+
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+
+
+/*
+**********HOVER EFFECTS STYLING********************
+*/
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: 'feathericons';
+  src:url('../fonts/feathericons/feathericons.eot?-8is7zf');
+  src:url('../fonts/feathericons/feathericons.eot?#iefix-8is7zf') format('embedded-opentype'),
+    url('../fonts/feathericons/feathericons.woff?-8is7zf') format('woff'),
+    url('../fonts/feathericons/feathericons.ttf?-8is7zf') format('truetype'),
+    url('../fonts/feathericons/feathericons.svg?-8is7zf#feathericons') format('svg');
+}
+
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  height: 700px;
+  width: 1280px;
+  text-align: center;
+}
+
+
+/*NAV BAR*/
+
+.container-fluid{
+  background: rgba(97,96,144,0.46);
+}
+.navbar-nav a{
+  font-size: 18px;
+  padding-top: 5px;
+}
+
+#nav_img{
+  height: 18px;
+  width: auto;
+}
+
+
+
+/*
+********STYLING FOR PANELS ON HOMEPAGE AND PROGRAMME LIST PAGE********
+*/
+.home_panel, .prog_list, .filtered-list{
+  overflow: hidden;
+  margin: 0;
+  padding: 3em 0 0 0;
+  width: 100%;
+  list-style: none;
+  text-align: center;
+}
+
+.prog_list, .filtered-list{
+  width: 80%;
+  margin: 0 auto;
+  padding: 0;
+
+}
+/* Common style */
+ .home_panel div{
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  overflow: hidden;
+  margin: -0.145em;
+  height: 337px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.prog_list .prog_list_instance, .filtered-list .prog_list_instance{
+    position: relative;
+    z-index: 1;
+    float:left;
+    overflow: hidden;
+    height: 200px;
+    width: 33.3%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.home_panel div img,  .prog_list .prog_list_instance img, .filtered-list .prog_list_instance img{
+  position: relative;
+  display: block;
+  min-height: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.home_panel div .panel_text, .prog_list .prog_list_instance .prog_list_instance_text, .filtered-list .prog_list_instance .prog_list_instance_text{
+  padding: 2em;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.25em;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.home_panel div .panel_text::before,
+.home_panel div .panel_text::after, .prog_list .prog_list_instance .prog_list_instance_text::before, .prog_list .prog_list_instance .prog_list_instance_text::after, .filtered-list .prog_list_instance .prog_list_instance_text::before, .filtered-list .prog_list_instance .prog_list_instance_text::after {
+  pointer-events: none;
+}
+
+.home_panel div .panel_text,
+.home_panel div a, .prog_list .prog_list_instance .prog_list_instance_text, .filtered-list .prog_list_instance .prog_list_instance_text{
+  position: absolute;
+  top: 3px;
+  left: 2px;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.home_panel div a {
+  z-index: 1000;
+  text-indent: 200%;
+  white-space: nowrap;
+  font-size: 0;
+  opacity: 0;
+}
+
+.home_panel div h2, .prog_list .prog_list_instance h2, .filtered-list .prog_list_instance h2 {
+  word-spacing: -0.15em;
+  
+  font-weight: 300;
+}
+
+.home_panel div h2 span, .prog_list .prog_list_instance p, .filtered-list .prog_list_instance p {
+  font-weight: 800;
+}
+
+.home_panel div h2,
+.home_panel div p, .prog_list .prog_list_instance h2, .prog_list .prog_list_instance p, .filtered-list .prog_list_instance h2, .filtered-list .prog_list_instance p {
+  margin: 0;
+}
+
+.home_panel div p, .prog_list .prog_list_instance p, .filtered-list .prog_list_instance p {
+  letter-spacing: 1px;
+  font-size: 68.5%;
+}
+
+/******Styling specific to home page transformations**********/
+
+.home_panel div .panel_text::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: -webkit-linear-gradient(top, rgba(72,76,97,0) 0%, rgba(72,76,97,0.8) 75%);
+  background: linear-gradient(to bottom, rgba(72,76,97,0) 0%, rgba(72,76,97,0.8) 75%);
+  content: '';
+  opacity: 0;
+  -webkit-transform: translate3d(0,50%,0);
+  transform: translate3d(0,50%,0);
+}
+
+.home_panel div h2 {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  color: #484c61;
+  -webkit-transition: -webkit-transform 0.35s, color 0.35s;
+  transition: transform 0.35s, color 0.35s;
+  -webkit-transform: translate3d(0,-50%,0);
+  transform: translate3d(0,-50%,0);
+}
+
+.home_panel div .panel_text::before,
+.home_panel div p {
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+}
+
+.home_panel div p {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 2em;
+  width: 100%;
+  opacity: 0;
+  -webkit-transform: translate3d(0,10px,0);
+  transform: translate3d(0,10px,0);
+}
+
+.home_panel div:hover h2 {
+  color: #fff;
+  -webkit-transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+  transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+}
+
+.home_panel div:hover .panel_text::before ,
+.home_panel div:hover p {
+  opacity: 1;
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+.home_panel {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: -50px;
+}
+
+.progs_panel {
+  width: 60%;
+}
+
+.progs_panel img{
+  width: 100%;
+  height: auto;
+}
+
+.edit_prog_panel {
+  width: 40%;
+}
+
+.aboutus_panel {
+  width: 30%;
+}
+
+.cases_panel {
+  width: 40%;
+}
+.addprog_panel{
+  width: 30%;
+
+}
+
+
+
+
+/*
+**********FOOTER STYLING***************************
+*/
+footer{
+ 
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.footer_element{
+  width: 19%;
+  display: inline-block;  
+  border: 2px solid black;
+}
+
+
+.footer_element::before {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+
+}
+.footer_element:hover{
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.footer_element a h2{
+  font-size: 20px;
+  margin: 0;
+}
+
+/*
+*****PROG LIST PAGE*************************
+*/
+
+
+/*
+*********MAP*********
+*/
+.angular-google-map-container {
+  height: 400px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+
+/*
+*********SIDEBAR FILTER*********
+*/
+
+.filter_nav{
+  display: inline-block;
+  width: 80%;
+  margin: 0 auto;
+  height: 400px;
+  text-align: left;
+height: auto;
+}
+
+.filter_nav .nav_block input, .filter_nav .nav_block div{
+  display: inline-block;
+  width: 29.6%;
+  vertical-align: top;
+  text-align: center;
+  cursor: pointer;
+}
+
+.filter_nav .nav_block input{
+  cursor: text;
+}
+
+.filter_nav .nav_block .prog_type_button, .filter_nav .nav_block .geog_type_button{
+  border: solid 1px gray;
+  border-radius: 5%;
+}
+
+
+.filter_nav .nav_block .filter_title{
+  width: 10%;
+  font-weight: bold;
+}
+
+
+
+.filter_nav .nav_block{
+  width: 100%;
+  display: inline-block;
+}
+
+.prog_type_button li{
+  display: inline-block;
+}
+
+
+.filter_nav .nav_block #prog_type_list li{
+  display: inline-block;
+  width: 25%;
+  border: solid 1px gray;
+  border-radius: 5%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.filter_nav .nav_block #continent_list li, .filter_nav .nav_block #country_list li{
+  display: inline-block;
+  width: 16.66%;
+  border: solid 1px gray;
+  border-radius: 5%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.filter_nav .nav_block .prog_type_button:hover, .filter_nav .nav_block .geog_type_button:hover, .filter_nav .nav_block #prog_type_list li:hover, .filter_nav .nav_block #continent_list li:hover, .filter_nav .nav_block #country_list li:hover{
+  font-weight: bold;
+  background-color: #B1E3BE;
+}
+
+.active{
+  font-weight: bold;
+  background-color: #B1E3BE;
+}
+
+
+
+/******Styling specific to programmes list page transformations**********/
+.prog_list .prog_list_instance img, .filtered-list .prog_list_instance img {
+  width: -webkit-calc(100% + 50px);
+  width: calc(100% + 50px);
+  opacity: 0.7;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(-40px,0, 0);
+  transform: translate3d(-40px,0,0);
+}
+
+.prog_list .prog_list_instance .prog_list_instance_text, .filtered-list .prog_list_instance .prog_list_instance_text {
+  top: auto;
+  bottom: 0;
+  height: 100%;
+  text-align: left;
+}
+
+.prog_list .prog_list_instance h2,
+.prog_list .prog_list_instance p, .filtered-list .prog_list_instance h2, .filtered-list .prog_list_instance p {
+  -webkit-transform: translate3d(0,40px,0);
+  transform: translate3d(0,40px,0);
+}
+
+.prog_list .prog_list_instance h2, .filtered-list .prog_list_instance h2 {
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+}
+
+.prog_list .prog_list_instance p, .filtered-list .prog_list_instance p {
+  color: rgba(255,255,255,1);
+  opacity: 0;
+  -webkit-transition: opacity 0.2s, -webkit-transform 0.35s;
+  transition: opacity 0.2s, transform 0.35s;
+}
+
+.prog_list .prog_list_instance:hover img,
+.prog_list .prog_list_instance:hover p, .filtered-list .prog_list_instance:hover .img, .filtered-list .prog_list_instance:hover p {
+  opacity: 1;
+}
+
+.prog_list .prog_list_instance:hover img,
+.prog_list .prog_list_instance:hover h2,
+.prog_list .prog_list_instance:hover p, .filtered-list .prog_list_instance:hover img, .filtered-list .prog_list_instance:hover h2, .filtered-list .prog_list_instance:hover p {
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+.prog_list .prog_list_instance:hover p, .filtered-list .prog_list_instance:hover p {
+  -webkit-transition-delay: 0.05s;
+  transition-delay: 0.05s;
+  -webkit-transition-duration: 0.35s;
+  transition-duration: 0.35s;
+}
+
+
+
+/*************************************************
+******ABOUT US******************************
+*/
+.about_us_page{
+  width: 100%;
+  height: 800px;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+}
+
+.nesta_logo{
+  width: 60%;
+  margin: 20px auto;
+}
+
+.about_us_container {
+  height: 600px;
+  width: 100%;
+  background-size: auto 145%;
+  padding-top: 7%;
+  margin-top: -20px;
+}
+
+
+.about_us {
+  margin: 0px auto;
+  padding: 100px;
+  text-align: center;
+  font-size: 20px;
+  width: 80%;
+  color: white;
+  background-color: rgba(36, 107, 178, 0.7);
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+.twitterfeed_panel{
+  width: 30%;
+  height: 600px;
+  padding-top: 0;
+  overflow: hidden;
+  opacity: 1;
+  display: inline-block;
+}
+
+.nesta_video{
+  display: inline-block;
+  width: 40%;
+  padding: 50px;
+  vertical-align: top;
+  margin-right: 50px;
+}
+
+.good_inc, .st_fact{
+  display: inline-block;
+  width: 30%;
+  height: 30px;
+  border: 1px dashed gray;
+}
+
+
+/*************************************************
+*******PROG FORM****************************
+*/
+
+.new_programme{
+  text-align: center;
+}
+
+.form_container{
+  margin-top: 5%;
+}
+.prog_form_first{
+  height: auto;
+  width: 400px;
+  background-color: rgba(70, 50, 80, 0.7);
+  padding: 50px;
+  margin: 100px auto;
+  color: black;
+  font-family: 'feathericons';
+}
+
+.form_container div img{
+  width: 51px;
+  float: right;
+  margin: -50px -40px 0 0;
+  cursor: pointer;
+}
+
+.prog_form_second{
+  height: auto;
+  width: 400px;
+  color: black;
+  font-family: 'feathericons';
+  background-color: rgba(90, 70, 100, 0.7);
+  padding: 50px;
+  margin: 100px auto;
+}
+
+.prog_form_third{
+  height: auto;
+  width: 400px;
+  color: black;
+  font-family: 'feathericons';
+  background-color: rgba(90, 70, 100, 0.7);
+  
+  padding: 50px;
+  margin: 100px auto;
+}
+
+label{
+  color: white;
+}
+
+
+.first_next, .second_next{
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+  background-color: pink;
+  margin: 20px;
+  font-weight: bold;
+  border: 1px solid pink;
+  border-radius: 5px;
+}
+
+.first_next:hover, .second_next:hover{
+/*  border: 2px solid pink;
+*/  
+  border: 1px solid rgba(200,0,200,1);
+  cursor: pointer;
+}
+
+.first_back, .second_back{
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+  background-color: gray;
+  margin: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.first_back:hover, .second_back:hover{
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+/******************************************************
+** CASE STUDIES ******************/
+
+.case_study{
+  padding: 5%;
+}
+
+
+.case_studies_header{
+  background-color: rgba(50, 50 , 100, 0.2);
+  padding: 20px 0;
+}
+
+.cs_facts{
+  display: inline-block;
+  width: 20%;
+  margin: 5% 5% 0 0;
+  font-size: 20px;
+  vertical-align: top;
+}
+
+.case_study img{
+  width: 40%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.cs_description{
+  width: 80%;
+  padding: 0 5%;
+  margin: 0 auto;
+  margin-top: 50px;
+  background-color: rgba(50, 50 , 100, 0.2)
+}
+
+/*
+********PROFILE PAGE************************
+*/
+.showing-selected-programme{
+  font-family: 'Lato', sans-serif;
+}
+
+/*.profile{
+  margin: 0 auto;
+  width: 60%;
+  overflow: hidden;
+  font-size: 20px;
+}*/
+
+
+.profile-flip-container {
+  perspective: 1000;
+
+}
+.profile-flip-container:hover .profile-flipper, .profile-flip-container.hover .profile-flipper {
+    transform: rotateY(180deg);
+}
+
+.profile-flip-container, .profile-front, .profile-back {
+  width: 800px;
+  height: 500px;
+  margin: 20px auto;
+}
+
+/* flip speed goes here */
+.profile-flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.profile-front, .profile-back {
+  backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.profile-front {
+  font-size: 50px;
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.profile-back {
+  transform: rotateY(180deg);
+  font-size: 20px;
+  margin-top: 80px;
+}
+
+.profile_name{
+  border-bottom: 1px dashed gray;
+  border-top: 1px dashed gray;
+  width: 80%;
+  margin: 0 auto;
+  font-size: 50px;
+  margin-top: 50px;
+  padding-top: 10px;
+}
+.profile_image{
+  height: 400px;
+  overflow: hidden;
+}
+.profile_image img{
+  height: 100%;
+}
+
+.profile_description{
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed gray;
+}
+
+.profile_type, .profile_duration{
+  display: inline-block;
+  width: 300px;
+  padding: 20px 0;
+}
+
+.profile_funding{
+  border-bottom: 1px dashed gray;
+  border-top: 1px dashed gray;
+  padding: 20px 0;
+  width: 80%;
+  margin: 0 auto;
+}
+.profile_bottom_section{
+  width: 80%;
+}
+.venture_list{
+  width: 35%;
+  min-height: 100px;
+  height: auto;
+  display: inline-block;
+  border-right: 1px solid gray;
+  vertical-align: top;
+  padding-top: 10px;
+  float: left;
+  margin-bottom: 40px;
+}
+.ventures-list-title{
+  font-size: 30px;
+  color: gray;
+}
+
+.vent_name:hover{
+  background-color: #C4B9C4;
+  box-shadow: 0 0 10px #ccc;
+  font-weight: bold;
+}
+
+.profile_buttons{
+  font: white;
+  width: 80%;
+  display: inline-block;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+.profile_url, .back_to_progs{
+  display: inline-block;
+  margin: 20px;
+  background-color: gray;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 250px;
+  height: 30px;
+  color: #D3C347;
+  font-size: 20px;
+}
+
+
+.profile_url a:link, .profile_url a:visited, .back_to_progs a:link, .back_to_progs a:visited {
+    color: #D3C347;
+}
+
+.profile_url:hover, .back_to_progs:hover{
+  font-weight: bold;
+  color: #ABCFB6;
+  cursor: pointer;
+}
+
+.profile_url a:hover{
+  text-decoration: none;
+  background: gray;
+  color: #ABCFB6;
+}
+
+.submit_button{
+  width: 70px;
+  height: 30px;
+  background-color: pink;
+  border: none;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.prog_list .venture_list_ins{
+  width: 75%;
+  float: left;
+  height: 300px;
+
+}
+
+.showing-selected-programme .prog_list{
+  width: 50%;
+}
+
+
+.venture_list_inst_text{
+  width: 100%;
+  height: 300px;
+}
+
+
+.vent_inst_img{
+  width: 100%;
+}
+
+.venture_list_inst_text p{
+  width: 90%
+}
+
+/*
+******LOGIN AND SIGN UP*************************
+*/
+
+.sign_up_page{
+  width: 100%;
+}
+
+
+/*
+*********NEW VENTURE FORM***************************
+*/
+.new_venture_form{
+  background-color: rgba(70, 50, 80, 0.7);
+}
+
+/*
+*************MANAGE PROGRAMMES**************************
+*/
+
+
+.manage_progs{
+  width: 90%;
+  margin: 0 auto;
+  height: auto;
+  margin-top: -50px;
+}
+.manage_progs_page{
+  height: 400px;
+  margin-top: 50px;
+}
+
+
+.manage_progs img{
+float: left;
+  width: auto;
+  height: 380px;
+  display: inline-block;
+  margin-top: 20px;
+}
+.manage_programme_instance{
+  width: 100%;
+  height: auto;
+}
+
+.manage_programme_instance img{
+  width: 50%;
+  display: inline-block;
+  border: 1px solid black;
+}
+
+img.venture_img{
+  max-width: 100%;
+}
+
+.member_progs_content{
+  height: 380px;
+  width: 45%;
+  float: right;
+  padding: 2%;
+  font-size: 15px;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.member_prog_name{
+  font-size: 25px;
+  font-weight: bold;
+  width: 50%;
+  margin: 5% auto;
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+}
+
+.member_prog_buttons .button{
+  width: 25%;
+  border: 1px solid black;
+  display: inline-block;
+}
+.member_progs_ventures{
+  clear: both;
+  text-align: center;
+}
+.member_progs_ventures_instance{
+  width: 25%;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+img.close_button{
+  width: 20%;
+  height: auto;
+  float: right;
+  position: relative;
+  right: -10px;
+}
+
+.button{
+  cursor: pointer;
+}
+/*
+*************ABOUT PROGRAMMES**************************
+*/
+
+
+.abount_progs_page{
+  padding: 0 10%;
+  color: white;
+  font-family: 'Lato', sans-serif;
+}
+
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000;
+  background: rgba(255,140,0,0.8);
+  border: 1px solid black;
+  margin: 30px;
+
+}
+  /* flip the pane when hovered */
+  .flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+  }
+
+.flip-container, .front, .back {
+  width: 400px;
+  height: 250px;
+  float: left;
+
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 30px;
+}
+
+/* front pane, placed above back */
+.front {
+  margin-top: 50px;
+  font-size: 50px;
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+  font-size: 20px;
+}

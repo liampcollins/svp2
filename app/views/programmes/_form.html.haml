@@ -1,0 +1,74 @@
+
+
+.editprog_controller{"ng-controller" => "progController"}
+
+  .form_background
+
+  = form_for @programme do |f|
+    - if @programme.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@programme.errors.count, "error")} prohibited this programme from being saved:"
+        %ul
+          - @programme.errors.full_messages.each do |msg|
+            %li= msg
+    .form_container
+      .prog_form_first{'ng-hide' => 'showingSecondForm || showingThirdForm' }
+        %a{:href => "/"}
+          %img{:src => asset_path("close_button.png")}/
+        .field
+          = f.label "Programme Name"
+          %br
+          = f.text_field :name
+        .field
+          = f.label "Programme Type"
+          %br
+          / = f.text_field :prog_type
+          = f.select(:prog_type, :options => ["Accelerator", "Incubator", "Competition", "Bootcamp"])
+        .field
+          = f.label :location
+          %br
+          = f.text_field :city, :placeholder => "City"
+          = f.text_field :country, :placeholder => "Country"
+          = f.text_field :continent, :placeholder => "Continent"
+        .first_next{'ng-click' => 'showSecondForm()'}
+          NEXT
+    .form_container
+      .prog_form_second{'ng-show'=>'showingSecondForm'}
+        %a{:href => "/"}
+          %img{:src => asset_path("close_button.png")}/
+        .field
+          = f.label :description
+          %br
+          = f.text_area :description, :rows => 10
+        .first_back{'ng-click' => 'hideSecondForm()'}
+          BACK
+        .second_next{'ng-click'=>'showThirdForm()'}
+          NEXT
+    .form_container
+      .prog_form_third{'ng-show'=>'showingThirdForm'}
+        %a{:href => "/"}
+          %img{:src => asset_path("close_button.png")}/
+        .field
+          = f.label :duration
+          %br
+          = f.text_field :duration
+        .field
+          = f.label :funding_offered
+          %br
+          = f.number_field :funding_offered
+        .field
+          = f.label :website_url
+          %br
+          = f.text_field :website_url
+        .field
+          = f.label :founded
+          %br
+          = f.number_field :founded
+        .field
+          = f.label :prog_image
+          %br
+          = f.file_field :prog_image
+        .second_back{'ng-click' => 'hideThirdForm()'}
+          BACK
+        .actions
+          = f.submit 'Save', :class => "submit_button"

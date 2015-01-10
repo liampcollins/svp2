@@ -1,0 +1,63 @@
+
+.home_panel
+  
+  .progs_panel
+    %img{:src => asset_path( 'sv2.jpg' )}/
+    .panel_text
+      %h2
+        View 
+        %span Programmes
+      %p
+        Filter programmes by location and type
+      = link_to 'View Programmes', programmes_path
+
+  .edit_prog_panel
+    %img{:src => asset_path( 'svafrica.jpg' )}/
+    .panel_text
+      %h2
+        Manage 
+        %span Your Programmes
+      -if current_user
+        %p
+          Update details on your programme
+        = link_to 'Manage Your Programme', member_path(current_user.id)
+      -else
+        %p
+          Update details on your programme
+        = link_to 'Manage Your Programme', new_user_session_path
+
+  .aboutus_panel
+    %img{:src => asset_path( 'nesta.png' )}/
+    .panel_text
+      %h2
+        About 
+        %span Nesta
+      %p
+        Learn more about Nesta and our work on social ventures
+      = link_to 'About Nesta', page_path('about')
+  .cases_panel
+    %img{:src => asset_path( 'lifelab1.jpg' )}/
+    .panel_text
+      %h2
+        About Social Venture 
+        %span Programmes
+      %p
+        Learn more about the programme types featured
+      = link_to 'About Social Venture Programmes', page_path('about_progs')
+  .addprog_panel
+    %img{:src => asset_path( 'sv1.jpg' )}/
+    .panel_text
+      %h2
+        Add 
+        %span A Programme
+      %p
+        Have your programme listed on SVP
+      = link_to 'Add A Programme', new_programme_path
+  
+
+  
+
+
+
+  
+

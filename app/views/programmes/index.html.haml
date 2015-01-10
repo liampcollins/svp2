@@ -1,0 +1,52 @@
+
+.prog_controller{"ng-controller" => "progController"}
+ 
+  .nav_and_list{'ng-show' => 'showingNavAndList'}
+    
+    %google-map{:center=>"map.center", :zoom=>"map.zoom"}
+      %markers{:models=>"markers", :coords=>"'self'", :options => "'options'"}
+        %windows{:show => "show"}
+          %div{"ng-non-bindable"=>""}{{title}}
+
+    .filter_nav
+      .nav_block
+        %input{'ng-model'=>"searchText", "placeholder"=>"Search for programmes"}
+        .filter_title
+          Filter by:
+        .prog_type_button{'ng-click' => 'progFilterClicked()', "ng-class"=>"{active: prog_list_invisible}"}
+          Programme Type
+        .geog_type_button{'ng-click' => 'contFilterClicked()', "ng-class"=>"{active: continent_list_invisible}"}
+          Geography
+        %ul#prog_type_list{'ng-class'=>'prog_list'}
+          %li{'ng-repeat' => 'programme_type in programme_types', 'ng-show' => 'prog_list_invisible', 'ng-click' => 'programmeClicked(programme_type)', "ng-class"=>"{active: (programme_type_clicked == programme)}", 'class'=>'prog_type'}
+            {{programme_type}}
+        %ul#continent_list
+          %li{'ng-repeat' => 'continent in continents', 'ng-click' => 'continentClicked(continent)', 'ng-show' => 'continent_list_invisible', 'class'=>'continent_button'} 
+            {{continent}}
+        %ul#country_list
+          %li{'ng-repeat' => 'country in countries', 'ng-show' => "showingCountries", 'ng-click' => 'countryClicked(country)', 'class'=>'country_button'}
+            {{country}}
+        
+    .prog_list{'ng-hide' => "showingFilteredResults" || "showingProfile"}
+      .prog_list_instance{'ng-repeat'=>"programme in programmes | filter:searchText", 'ng-click' => 'showProgramme(programme)'}
+ 
+        %img(src="{{programme.prog_image.url}}")
+        .prog_list_instance_text
+          %h2
+            {{programme.name}}
+          %p
+            {{programme.prog_type}}
+            %span || {{programme.city}}
+
+    .filtered-list{'ng-show' => 'showingFilteredResults'}
+      .prog_list_instance{'ng-repeat'=>"programme in programmes | filter: searchText", 'ng-click' => 'showProgramme(programme)'}   
+        %img(src="{{programme.prog_image.url}}")
+        .prog_list_instance_text
+          %h2
+            {{programme.name}}
+          %p
+            {{programme.prog_type}}
+            %span || {{programme.city}}
+
+  .profile{'ng-hide' => '!showingProfile'}
+    .showing-selected-programme

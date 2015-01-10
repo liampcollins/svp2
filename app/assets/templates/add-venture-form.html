@@ -1,0 +1,66 @@
+<div class="form_background"></div>
+<form role="form" name="newVentureForm" ng-submit="addVenture()">
+  <div class="form_container">
+    <div class="prog_form_first" ng-hide='showingSecondForm || showingThirdForm'>
+      <img class="close_button" src="/assets/close_button.png" ng-click="closeForm()">
+      <input type="hidden" ng-model="addVenture.programme" id="programme" value="{{programme.id}}" >
+      <div class="field">
+        <label for="title">Venture Name
+        </label><br>
+        <input type="text" id = "title" placeholder="Name" ng-model="addVenture.title">
+      </div>
+      <div class="field">
+        <label for="org_type">Venture Type
+        </label>
+        <select ng-model="addVenture.org_type" id="org_type" ng-options="type for type in venture_types"></select>
+      </div>
+      <div class="field">
+        <label for="location">Location
+        </label><br>
+        <input type="text" id="location" placeholder="Location" ng-model="addVenture.location" >
+      </div>
+      <div class="first_next" ng-click='showSecondForm()'>NEXT</div>
+    </div>
+  </div>
+
+  <div class="form_container">
+    <div class="prog_form_second" ng-show='showingSecondForm'>
+      <img class="close_button" src="/assets/close_button.png" ng-click="closeForm()">
+      <div class="field">
+        <label for="description">Description
+        </label><br>
+        <textarea id="description" rows="10" placeholder="Venture Description" ng-model="addVenture.description"></textarea>
+      </div>
+      <div class="first_back" ng-click='hideSecondForm()'>BACK</div>
+      <div class="second_next" ng-click='showThirdForm()'>NEXT</div>
+    </div>
+  </div>
+
+  <div class="form_container">
+    <div class="prog_form_third" ng-show='showingThirdForm'>
+      <img class="close_button" src="/assets/close_button.png" ng-click="closeForm()">
+      <div class="field">
+        <label for="founder">Founder Name
+        </label><br>
+        <input type="text" id="founder" placeholder="Founder Name(s)" ng-model="addVenture.founder">
+      </div>
+      <div class="field">
+        <label for="sector">Sector
+        </label><br>
+        <input type="text" id="sector" placeholder="Venture Sector" ng-model="addVenture.sector">
+      </div>
+      <div class="field">
+        <label for="founded">Founded Year
+        </label><br>
+        <input type="number" id="founded" min="1960" max="2014" placeholder="Founded Year" ng-model="addVenture.founded">
+      </div>
+      <div class="field">
+        <label for="image">Image
+        </label><br>
+        <input type="file" id="vent_image" placeholder="Venture Profile Image" ng-model="addVenture.vent_image">
+      </div>
+      <div class="second_back" ng-click='hideThirdForm()'>BACK</div>
+      <button type="submit">Submit</button>
+    </div>
+  </div>
+</form>

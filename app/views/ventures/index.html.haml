@@ -1,0 +1,33 @@
+%h1 Listing ventures
+
+%table
+  %tr
+    %th Name
+    %th Sector
+    %th Location
+    %th Description
+    %th Founded
+    %th Founder
+    %th Org type
+    %th Num employees
+    %th
+    %th
+    %th
+
+  - @ventures.each do |venture|
+    %tr
+      %td= venture.name
+      %td= venture.sector
+      %td= venture.location
+      %td= venture.description
+      %td= venture.founded
+      %td= venture.founder
+      %td= venture.org_type
+      %td= venture.num_employees
+      %td= link_to 'Show', venture
+      %td= link_to 'Edit', edit_venture_path(venture)
+      %td= link_to 'Destroy', venture, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Venture', new_venture_path

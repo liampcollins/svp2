@@ -1,0 +1,37 @@
+= form_for @venture do |f|
+  - if @venture.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@venture.errors.count, "error")} prohibited this venture from being saved:"
+      %ul
+        - @venture.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :sector
+    = f.text_field :sector
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :founded
+    = f.number_field :founded
+  .field
+    = f.label :founder
+    = f.text_area :founder
+  .field
+    = f.label :org_type
+    = f.text_field :org_type
+  .field
+    = f.label :num_employees
+    = f.number_field :num_employees
+  .field
+    = f.label :vent_image
+    = f.file_field :vent_image
+  .actions
+    = f.submit 'Save'

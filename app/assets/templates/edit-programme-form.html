@@ -1,0 +1,53 @@
+
+<div class="form_background"></div>
+<form role="form" name="programmeForm" ng-submit="editProgramme()">
+  <div class="form_container">
+    <div class="prog_form_first" ng-hide='(!hidingManageProgs || showingSecondForm || showingThirdForm)'>
+      <div class="field">
+        <label for="prog_type">Programme Type
+        </label>
+        <select ng-model="selected_programme.prog_type" ng-options="selected_programme.prog_type as type for type in programme_types"></select>
+      </div>
+      
+      <div class="field">
+        <label for="location">Location
+        </label><br>
+        <input type="text" id="continent" placeholder="Continent" ng-model="selected_programme.continent" >
+        <input type="text" id="country" placeholder="Country" ng-model="selected_programme.country">
+        <input type="text" id="city" placeholder="City" ng-model="selected_programme.city">
+      </div>
+      
+      <div class="first_next" ng-click='showSecondForm()'>NEXT</div>
+    </div>
+  </div>
+
+  <div class="form_container">
+    <div class="prog_form_second" ng-show='showingSecondForm'>
+      <div class="field">
+        <textarea id="description" rows="10" placeholder="Programme Description" ng-model="selected_programme.description"></textarea>
+      </div>
+      <div class="first_back" ng-click='hideSecondForm()'>BACK</div>
+      <div class="second_next" ng-click='showThirdForm()'>NEXT</div>
+    </div>
+  </div>
+
+  <div class="form_container">
+    <div class="prog_form_third" ng-show='showingThirdForm'>
+      <div class="field">
+        <input type="text" id="funding_offered" placeholder="Funding Offered" ng-model="selected_programme.funding_offered">
+      </div>
+      <div class="field">
+        <input type="text" id="website_url" placeholder="Website Url" ng-model="selected_programme.website_url">
+      </div>
+      <div class="field">
+        <input type="number" id="founded" min="1980" max="2014" placeholder="Founded Year" ng-model="selected_programme.founded">
+      </div>
+      <div class="field">
+        <input type="file" id="image_upload" placeholder="Programme Image" ng-model="selected_programme.prog_image">
+      </div>
+      <div class="second_back" ng-click='hideThirdForm()'>BACK</div>
+      <button type="submit" ng-click="updateProgramme(selected_programme)">Submit</button>
+    </div>
+  </div>
+</form>
+
