@@ -15,6 +15,8 @@
   
   <script><% if current_user%>
             window.current_user_programmes = <%= raw current_user.programmes.to_json(include: [:ventures]) %>
+          <% else %>
+            window.current_user_programmes = <%= false %>
           <% end %></script>
   <%= csrf_meta_tags %>
 </head>

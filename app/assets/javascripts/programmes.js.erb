@@ -56,7 +56,11 @@
     $http.get('/programmes.json').success(function(data) {
       $scope.programmes = data
     })
-    $scope.current_user_programmes = current_user_programmes
+
+    if(current_user_programmes != false){
+      $scope.current_user_programmes = current_user_programmes      
+    }
+
 
     // Setting map centrepoints for continents
     $scope.mapcoords = {}
