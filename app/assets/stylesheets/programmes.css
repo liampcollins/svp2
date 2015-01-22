@@ -823,6 +823,16 @@ label{
 }
 
 
+.google_oauth2{
+  background: white;
+  font-size: 20px;
+  margin-top: 40px;
+}
+
+.google_oauth2:hover{
+  text-decoration: none;
+}
+
 /*
 *********NEW VENTURE FORM***************************
 */
