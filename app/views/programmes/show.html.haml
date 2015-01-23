@@ -26,3 +26,5 @@
     %a{:href => "=@programme.website_url"} Website
   .edit_button{"ng-click" => "editProfile(programme)"}
     EDIT
+
+    / = link_to 'Destroy', programme_path(@programme), :method => :delete
