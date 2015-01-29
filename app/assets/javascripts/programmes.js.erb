@@ -36,17 +36,17 @@
    // Creating continent country lists based on what ventures are in the db
     $scope.countrylist = {}
       $scope.continents.forEach(function(continent){
-        continent = continent.toLowerCase().replace(/\s/g, '')
+        continent = continent.toLowerCase().replace(/\s/g, '');
         $scope.countrylist[continent + "_countries"] = []
     })
     gon.programmes.forEach(function(programme){
       $scope.continents.forEach(function(continent){
-        continent = continent.toLowerCase().replace(/\s/g, '')
-        continent_country_list_str = "all_"+continent+"_countries"
-        continent_country_list = eval('{' + continent_country_list_str + '}')
-        coutries_in_continent_in_db = continent + "_countries"
+        continent = continent.toLowerCase().replace(/\s/g, '');
+        continent_country_list_str = "all_"+continent+"_countries";
+        continent_country_list = eval('{' + continent_country_list_str + '}');
+        coutries_in_continent_in_db = continent + "_countries";
         if ((continent_country_list.indexOf(programme.country)>-1) && ($scope.countrylist[coutries_in_continent_in_db].indexOf)(programme.country)==-1){
-          $scope.countrylist[coutries_in_continent_in_db].push(programme.country)
+          $scope.countrylist[coutries_in_continent_in_db].push(programme.country);
         }
       })
     })
@@ -55,48 +55,47 @@
     // Sourcing programmes from db
     $http.get('/programmes.json').success(function(data) {
       $scope.programmes = data
-    })
+    });
 
     if(current_user_programmes != false){
       $scope.current_user_programmes = current_user_programmes      
-    }
+    };
 
 
     // Setting map centrepoints for continents
     $scope.mapcoords = {}
-    $scope.mapcoords["europe_coords"]= [51.7392773, 13.7809811]
-    $scope.mapcoords["asia_coords"]= [22.2529927, 100.2653561]
-    $scope.mapcoords["africa_coords"]= [8.998471, 21.515356]
-    $scope.mapcoords["northamerica_coords"]= [40.7676361, -94.500269]
-    $scope.mapcoords["southamerica_coords"]= [-14.8669877, -60.5340838]
-    $scope.mapcoords["oceania_coords"]= [-29.0818288, 145.0420881]
-    $scope.programme_types = ["Accelerator", "Incubator", "Competition", "Bootcamp"]
-    $scope.venture_types = ["Ltd. Company", "Community Organisation", "Registered Charity"]
+    $scope.mapcoords["europe_coords"]= [51.7392773, 13.7809811];
+    $scope.mapcoords["asia_coords"]= [22.2529927, 100.2653561];
+    $scope.mapcoords["africa_coords"]= [8.998471, 21.515356];
+    $scope.mapcoords["northamerica_coords"]= [40.7676361, -94.500269];
+    $scope.mapcoords["southamerica_coords"]= [-14.8669877, -60.5340838];
+    $scope.mapcoords["oceania_coords"]= [-29.0818288, 145.0420881];
+    $scope.programme_types = ["Accelerator", "Incubator", "Competition", "Bootcamp"];
+    $scope.venture_types = ["Ltd. Company", "Community Organisation", "Registered Charity"];
 
 //////////////////////////////////////////////////////////////// 
 /////////SETTING DEFAULT STATES////////////////
-    $scope.selected_programme = false
-    $scope.showingNavAndList = true
-    $scope.showingFilteredResults = false
-    $scope.showingProfile = false
+    $scope.selected_programme = false;
+    $scope.showingNavAndList = true;
+    $scope.showingFilteredResults = false;
+    $scope.showingProfile = false;
     $scope.prog_list_invisible = false;
     $scope.continent_list_invisible = false;
     $scope.country_list_invisible = false;
     $scope.programmeWithNewVenture = {}
-    $scope.showingSecondForm=false
-    $scope.showingThirdForm=false
-    $scope.programme_type_clicked = false
-    $scope.continent_clicked = false
-    $scope.showingCountries=true
-    $scope.country_clicked = false
-    $scope.geog_clicked = false
-    $scope.showingSecondForm = false
-    $scope.showingThirdForm = false
-    $scope.showingGoodInc = true
-    $scope.showingStartFac = false
-     // $scope.hidingManageProgs = true
+    $scope.showingSecondForm=false;
+    $scope.showingThirdForm=false;
+    $scope.programme_type_clicked = false;
+    $scope.continent_clicked = false;
+    $scope.showingCountries=true;
+    $scope.country_clicked = false;
+    $scope.geog_clicked = false;
+    $scope.showingSecondForm = false;
+    $scope.showingThirdForm = false;
+    $scope.showingGoodInc = true;
+    $scope.showingStartFac = false;
 if ($scope.continent_list_invisible = false){
-  $scope.showingCountries=true
+  $scope.showingCountries=true;
 }
 
 
@@ -120,7 +119,6 @@ if ($scope.continent_list_invisible = false){
           show: false
       };
       ret.onClick = function() {
-        console.log("Clicked!");
         ret.show = !ret.show;
       };
       ret[idKey] = programme.id;
@@ -134,75 +132,72 @@ if ($scope.continent_list_invisible = false){
       zoom: 3
     };
 
-    $scope.markers = []
+    $scope.markers = [];
     gon.programmes.forEach(function(programme){
       $scope.markers.push(createMarker(programme))
-    })
+    });
 
     $scope.showInfoWindow = function() {
       infoWindow.open(map, marker);
-    }
+    };
 
     $scope.clickMe = function(){
-      console.log("infoboxclicked")
-      alert("clicked")
-    }
+      alert("clicked");
+    };
 
 ////////////////////////////////////////////////////////////////// 
 ///////PROGRAMMES FILTER METHODS ////////////////
 
 
     $scope.progFilterClicked = function(){
-      console.log('here')
-      $scope.prog_list_invisible = !$scope.prog_list_invisible
-    }
+      $scope.prog_list_invisible = !$scope.prog_list_invisible;
+    };
 
     $scope.contFilterClicked = function(){
-      $scope.continent_list_invisible = !$scope.continent_list_invisible
+      $scope.continent_list_invisible = !$scope.continent_list_invisible;
       $scope.showingCountries=false;
-
-    }
+    };
     
 
     $scope.programmeClicked = function(programme_type){
 
       if($scope.programme_type_clicked == programme_type.toLowerCase().replace(/\s/g, '')){
         //THIS PROGRAMME ALREDY SELECTED
-        event.srcElement.className = "ng-binding ng-scope prog_type"
-        $scope.programme_type_clicked = false
+        event.srcElement.className = "ng-binding ng-scope prog_type";
+        $scope.programme_type_clicked = false;
       }else{
         //THIS PROGRAMME NOT ALREADY SELECTED
 
       // Removing active class from all sibling buttons
-        progButtons = event.srcElement.parentElement.children
-        numProgButtons = progButtons.length
+        progButtons = event.srcElement.parentElement.children;
+        numProgButtons = progButtons.length;
         for (var i = 0; i < numProgButtons; i++) {
-        progButtons[i].className = "ng-binding ng-scope prog_type"
-        }
+        progButtons[i].className = "ng-binding ng-scope prog_type";
+        };
         // Add active class to newly selected button
-        event.srcElement.className = event.srcElement.className + " active"
+        event.srcElement.className = event.srcElement.className + " active";
 
-        $scope.programme_type_clicked = programme_type.toLowerCase().replace(/\s/g, '')
-      }
-      $scope.showingFilteredResults = true
-    }
+        $scope.programme_type_clicked = programme_type.toLowerCase().replace(/\s/g, '');
+      };
+      $scope.showingFilteredResults = true;
+    };
 
     $scope.continentClicked = function(continent){
-      continent = continent.toLocaleLowerCase().replace(/\s/g, '')
+      continent = continent.toLocaleLowerCase().replace(/\s/g, '');
       if($scope.continent_clicked == continent){
         //THIS CONTINENT ALREADY SELECTED
-        event.srcElement.className = "ng-binding ng-scope continent_button"
+        event.srcElement.className = "ng-binding ng-scope continent_button";
         $scope.continent_clicked = false;
         $scope.geog_clicked = false;
         $scope.showingCountries=false;
       }else{
         //THIS CONTINENT NOT ALREADY SELECTED
         // Removing active class from all sibling buttons
-        continentButtons = event.srcElement.parentElement.children
-        numContinentButtons = continentButtons.length
+        continentButtons = event.srcElement.parentElement.children;
+        numContinentButtons = continentButtons.length;
         for (var i = 0; i < numContinentButtons; i++) {
-        continentButtons[i].className = "ng-binding ng-scope continent_button"
-        }
+        continentButtons[i].className = "ng-binding ng-scope continent_button";
+        };
         // Add active class to newly selected button
         event.srcElement.className = event.srcElement.className + " active";
 
@@ -233,34 +228,34 @@ if ($scope.continent_list_invisible = false){
     $scope.countryClicked = function(country){
       if($scope.country_clicked == country.toLowerCase().replace(/\s/g, '')){
         // Remove active class from deselected button
-        event.srcElement.className = "ng-binding ng-scope country_button"
-        $scope.country_clicked = false
-        $scope.geog_clicked = false
-        map_coords = [54, -15]
-        zoom = 3
+        event.srcElement.className = "ng-binding ng-scope country_button";
+        $scope.country_clicked = false;
+        $scope.geog_clicked = false;
+        map_coords = [54, -15];
+        zoom = 3;
       }else{
         // Removing active class from all sibling buttons
-        countryButtons = event.srcElement.parentElement.children
-        numCountryButtons = countryButtons.length
+        countryButtons = event.srcElement.parentElement.children;
+        numCountryButtons = countryButtons.length;
         for (var i = 0; i < numCountryButtons; i++) {
-        countryButtons[i].className = "ng-binding ng-scope country_button"
+        countryButtons[i].className = "ng-binding ng-scope country_button";
         }
         // Add active class to newly selected button
         event.srcElement.className = event.srcElement.className + " active";
 
-        $scope.country_clicked = country.toLowerCase().replace(/\s/g, '')
+        $scope.country_clicked = country.toLowerCase().replace(/\s/g, '');
         $scope.programmes.forEach(function(programme){
           if(programme.country.toLowerCase().replace(/\s/g, '') == country.toLowerCase().replace(/\s/g, '')){
-            map_coords = [parseInt(programme.lat), parseInt(programme.long)]
-          }
-        })
-        zoom = 5
-      }
-      $scope.showingFilteredResults = true
-      $scope.continent_clicked = false
-      $scope.geog_clicked = $scope.country_clicked
-      lat = map_coords[0]
-      lng = map_coords[1]
+            map_coords = [parseInt(programme.lat), parseInt(programme.long)];
+          };
+        });
+        zoom = 5;
+      };
+      $scope.showingFilteredResults = true;
+      $scope.continent_clicked = false;
+      $scope.geog_clicked = $scope.country_clicked;
+      lat = map_coords[0];
+      lng = map_coords[1];
       $scope.map = {
         center: {
           latitude: lat,
@@ -274,101 +269,86 @@ if ($scope.continent_list_invisible = false){
     $scope.search = function(programme){
       // If both a geography and a programme type have been clicked
       if($scope.geog_clicked != false && $scope.programme_type_clicked != false){
-        if (((programme.continent.toLowerCase().replace(/\s/g, '')==$scope.geog_clicked) || (programme.country.toLowerCase().replace(/\s/g, '')==$scope.geog_clicked)) && (programme.prog_type.toLowerCase().replace(/\s/g, '')==$scope.programme_type_clicked)) 
+        if (((programme.continent.toLowerCase().replace(/\s/g, '')==$scope.geog_clicked) || (programme.country.toLowerCase().replace(/\s/g, '')==$scope.geog_clicked)) && (programme.prog_type.toLowerCase().replace(/\s/g, '')==$scope.programme_type_clicked)); 
           {
           return true;
         }
         return false;
       //If only a programme type has been clicked
       }else if($scope.geog_clicked == false && $scope.programme_type_clicked != false){
-        if (programme.prog_type.toLowerCase().replace(/\s/g, '')==$scope.programme_type_clicked) 
+        if (programme.prog_type.toLowerCase().replace(/\s/g, '')==$scope.programme_type_clicked); 
           {
           return true;
         }
         return false;
       //If only a geography has been clicked
       }else if($scope.programme_type_clicked == false && $scope.geog_clicked != false ){
-        if ((programme.continent.toLowerCase().replace(/\s/g, '')==$scope.geog_clicked) || (programme.country.toLowerCase().replace(/\s/g, '')==$scope.geog_clicked)) 
+        if ((programme.continent.toLowerCase().replace(/\s/g, '')==$scope.geog_clicked) || (programme.country.toLowerCase().replace(/\s/g, '')==$scope.geog_clicked)); 
           {
           return true;
         }
         return false;
       //If nothing clicked
       }else{
-        return true
+        return true;
       }        
     };
 
     ////////////////////////////////////////////////
     /////// EDIT PROGRAMME FORM //////////////
     $scope.editProfile = function(programme){
-      $scope.editing_programme = programme
-      $scope.showingProfile = false
-      $scope.editingProgramme = true
-    }
+      $scope.editing_programme = programme;
+      $scope.showingProfile = false;
+      $scope.editingProgramme = true;
+    };
     $scope.showSecondForm = function(){
-      console.log('here')
-      console.log($scope.showingSecondFrom)
-      console.log("second form")
-      $scope.showingSecondForm=true
-    }
+      $scope.showingSecondForm=true;
+    };
     $scope.hideSecondForm = function(){
-      console.log("hide second form")
-      $scope.showingSecondForm=false
-    }
+      $scope.showingSecondForm=false;
+    };
     $scope.showThirdForm = function(){
-      $scope.showingSecondForm=false
-      $scope.showingThirdForm=true
-    }
+      $scope.showingSecondForm=false;
+      $scope.showingThirdForm=true;
+    };
     $scope.hideThirdForm = function(){
-      $scope.showingSecondForm=true
-      $scope.showingThirdForm=false
-    }
+      $scope.showingSecondForm=true;
+      $scope.showingThirdForm=false;
+    };
     $scope.updateProgramme = function(programme){
-    }
+    };
     $scope.closeForm = function(){
-      console.log("closing form")
-      $scope.showingProfile = true
-      $scope.editingProgramme = false
-      $scope.showingSecondForm=false
-      $scope.showingThirdForm=false
-      $scope.hidingManageProgs = false
+      $scope.showingProfile = true;
+      $scope.editingProgramme = false;
+      $scope.showingSecondForm=false;
+      $scope.showingThirdForm=false;
+      $scope.hidingManageProgs = false;
       $scope.addingVenture = false;
-    }
+    };
 //////////////////////////////////////////////////////////
 ////// NAVIGATION METHODS ////////////////    
 
     $scope.showProgramme = function(programme){
-      $scope.selected_programme = programme
-      $scope.showingProfile = true
-      $scope.showingNavAndList = false
-      $scope.showingFilteredResults = false
+      $scope.selected_programme = programme;
+      $scope.showingProfile = true;
+      $scope.showingNavAndList = false;
+      $scope.showingFilteredResults = false;
 
     }
 
     $scope.showVenture = function(venture){
-      console.log("showing venture")
-      console.log(venture)
-      $scope.showingVenture = true
-      $scope.selected_venture = venture
+      $scope.showingVenture = true;
+      $scope.selected_venture = venture;
     }
 
     $scope.editProgrammeButton = function(programme){
       window.location= "http://localhost:3000/programmes/" + programme.id + "/edit";
-
-      // console.log("editing profile")
-      // console.log(programme)
-      // $scope.editingProgramme = true
-      // $scope.showingProfile = false
-      // $scope.hidingManageProgs = true
-      // $scope.selected_programme = programme
     }
 
     $scope.editProgramme = function(){
-      console.log("in new programme")
-      route = "/programmes/"
-      id = $scope.selected_programme.id
-      json = ".json"
+      route = "/programmes/";
+      id = $scope.selected_programme.id;
+      json = ".json";
       request("PUT", route + id + json, {programme:{description: description.value, city: city.value, country: country.value, continent: continent.value, funding_offered: funding_offered.value, website_url: website_url.value, founded: founded.value }
       }).success(function(){
         $scope.selected_programme.description=description.value
@@ -378,55 +358,50 @@ if ($scope.continent_list_invisible = false){
         $scope.selected_programme.funding_offered= funding_offered.value, 
         $scope.selected_programme.website_url= website_url.value, 
         $scope.selected_programme.founded= founded.value
-        console.log($scope.selected_programme)
       })
-      $scope.editingProgramme = false
-      $scope.showingProfile = true
-      $scope.hidingManageProgs = false
+      $scope.editingProgramme = false;
+      $scope.showingProfile = true;
+      $scope.hidingManageProgs = false;
     }
     
     $scope.backToProgrammes = function(){
-      $scope.showingVenture = false
-      $scope.showingProfile = false
-      $scope.showingNavAndList = true
-      $scope.selected_programme = false
+      $scope.showingVenture = false;
+      $scope.showingProfile = false;
+      $scope.showingNavAndList = true;
+      $scope.selected_programme = false;
     }
 
     $scope.addVentureButton = function(programme){
-      $scope.hidingManageProgs = true
-      console.log("adding venture")
-      $scope.showingVentureForm = true
-      $scope.addingVenture = true
-      $scope.showingProfile = false
-      $scope.programmeWithNewVenture = programme
-    }
+      $scope.hidingManageProgs = true;
+      $scope.showingVentureForm = true;
+      $scope.addingVenture = true;
+      $scope.showingProfile = false;
+      $scope.programmeWithNewVenture = programme;
+    };
     $scope.addVenture = function(event){
-      venture_fields = ["org_type", "location", "description", "founder", "sector", "founded", "programme"]
-      data_fields = {}
+      venture_fields = ["org_type", "location", "description", "founder", "sector", "founded", "programme"];
+      data_fields = {};
       venture_fields.forEach(function(field){
-        data_fields[field] = eval('{' + 'newVentureForm.' + field + '.value' + '}')
+        data_fields[field] = eval('{' + 'newVentureForm.' + field + '.value' + '}');
       });
       data_fields["name"] = newVentureForm.title.value;
       data_fields["programme"] = $scope.programmeWithNewVenture.id;
       request("POST", "/ventures.json", {venture:data_fields}).success(function(){
         $scope.hidingManageProgs = false;
         $scope.showingVentureForm = false;
-        console.log("success");
       });
-    }
+    };
 
     $scope.showVentures = function(programme){
-      console.log("showingventures")
       if($scope.showingVentures == true){
-        $scope.showingVentures = false
-        event.srcElement.innerHTML = "Show Ventures"
+        $scope.showingVentures = false;
+        event.srcElement.innerHTML = "Show Ventures";
       }else{
-        $scope.showingVentures = true
-        event.srcElement.innerHTML = "Hide Ventures"
-      }
-      // $scope.selected_venture = venture
-    }
-  }])
+        $scope.showingVentures = true;
+        event.srcElement.innerHTML = "Hide Ventures";
+      };
+    };
+  }]);
 
   /////////////////////////////////////////////////
  ///// DIRECTIVES/////////////////////////////////
